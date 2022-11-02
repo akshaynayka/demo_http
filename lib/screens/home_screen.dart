@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<UserData> _allUserList = [];
-
+  final _userDataInstance = UserDataHelper();
   bool _isLoading = true;
   @override
   void initState() {
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _getData() async {
-    _allUserList = await UserDataHelper().getAllUserData();
+    _allUserList = await _userDataInstance.getAllUserData();
     setState(() {
       _isLoading = false;
     });
